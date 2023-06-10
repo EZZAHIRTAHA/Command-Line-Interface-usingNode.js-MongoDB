@@ -21,4 +21,4 @@ const customerSchema = mongoose.Schema({
 
 
 
-// module.exports = 
+module.exports = mongoose.model('Customer', customerSchema)
