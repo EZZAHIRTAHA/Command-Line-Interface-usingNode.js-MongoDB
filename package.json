@@ -1,0 +1,26 @@
+{
+  "name": "command-line-interface-usingnode.js-mongodb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EZZAHIRTAHA/Command-Line-Interface-usingNode.js-MongoDB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EZZAHIRTAHA/Command-Line-Interface-usingNode.js-MongoDB/issues"
+  },
+  "homepage": "https://github.com/EZZAHIRTAHA/Command-Line-Interface-usingNode.js-MongoDB#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "commander": "^10.0.1",
+    "inquirer": "^9.2.7",
+    "mongoose": "^7.2.3"
+  }
+}
