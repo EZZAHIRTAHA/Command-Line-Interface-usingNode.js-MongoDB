@@ -21,17 +21,49 @@ const findCustomer = async (name) => {
         });
 };
 
+
+const updateCustomer = async (_id, customer) => {
+    // const customerId = customer._id;
+    // const { firstName, lastName, email, phone } = customer;
+    await Customer.updateOne(
+      { _id},
+      customer
+    )
+      .then(() => {
+        console.info("Customer updated successfully");
+        // Additional code if needed
+        mongoose.connection.close();
+      })
+      .catch((error) => {
+        console.error("Error updating customer:", error);
+      });
+  };
+
+const deleteCustomer = async (_id) => {
+    await Customer.deleteOne({_id: _id})
+    .then(() => {
+        console.info("User deleted successfully");
+        mongoose.connection.close();
+    })
+    .catch(error => console.info(error));
+};
+  
+
+
 module.exports = {
     addCustomer,
-    findCustomer
+    findCustomer,
+    updateCustomer,
+    deleteCustomer
 };
 
-const db = mongoose.connect('mongodb://127.0.0.1:27017/myCLI', {
+mongoose.connect('mongodb://127.0.0.1:27017/myCLI', {
     useNewUrlParser: true,
     // Other parameters or options you may require
 })
     .then(() => {
-        console.log("Connected to MongoDB".cyan.underline.bold);
+        console.log(`Connecting to: mongodb://${mongoose.connection.host}/${mongoose.connection.port}/myCLI`
+        .cyan.underline.bold);
     })
     .catch((error) => {
         console.log("Unable to connect to MongoDB!".red.bold.underline, error);

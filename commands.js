@@ -1,6 +1,38 @@
 const program = require('commander');
+const inquirer = require('inquirer');
+const prompt = inquirer.createPromptModule();
+const 
+{
+    addCustomer, 
+    findCustomer, 
+    updateCustomer, 
+    deleteCustomer
+} = require('./server')
 
-const {addCustomer, findCustomer} = require('./server')
+
+
+const questions = [  
+        {
+            type: 'input',
+            name: 'firstName',
+            message:'Customer First Name'
+        },
+        {
+            type: 'input',
+            name: 'lastName',
+            message:'Customer Last Name'
+        },
+        {
+            type: 'input',
+            name: 'phone',
+            message:'Customer Phone'
+        },
+        {
+            type: 'input',
+            name: "email",
+        }
+    ];
+
 
 program
     .version('1.0.0')
@@ -8,20 +40,25 @@ program
 
 
 
+
 program
-    .command('add <firstName> <lastName> <phone> <email>')
-    //This sets an alias for the "add" command. Instead of typing the full command, users can use the alias "a" to invoke the "add" command.
+    .command('add')
     .alias('a')
-    .description("Add customer")
-    .action((firstName, lastName, phone, email ) => {
-        addCustomer({firstName, lastName, phone, email});
-    });
+    .description('')   
+    .action( () => {
+        prompt(questions).then(answers => addCustomer(answers))
+    }) 
+
 
 program
     .command('find <name>')
     .alias('f')
     .description('Find a customer')
     .action(name => findCustomer(name));
+
+
+
+
 
 
 program.parse(process.argv);

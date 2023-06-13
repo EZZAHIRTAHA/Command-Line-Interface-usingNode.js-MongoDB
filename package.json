@@ -20,7 +20,7 @@
   "dependencies": {
     "colors": "^1.4.0",
     "commander": "^10.0.1",
-    "inquirer": "^9.2.7",
+    "inquirer": "^8.2.5",
     "mongoose": "^7.2.3"
   }
 }
