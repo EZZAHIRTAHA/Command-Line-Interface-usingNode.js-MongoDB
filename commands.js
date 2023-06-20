@@ -39,7 +39,16 @@ program
     .version('1.0.0')
     .description('Client management system CLI by Ezzahir Taha');
 
-
+program
+    .help(`
+  Function                  Alias        Description
+  version                   v            To check the version of the customer-cli
+  client-cli add            a            To add new customers in the database
+  client-cli list           l            To check all the customers in the database
+  client-cli update [_ID]   u            To update details for specific customers in the database
+  client-cli delete [_ID]   d            To delete customers from the database
+  client-cli find [NAME]    f            To find a specific customes in the database
+  `)
 
 
 program
