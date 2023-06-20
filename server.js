@@ -6,7 +6,7 @@ const colors = require('colors');
 const addCustomer = async (customer) => {
     await Customer.create(customer)
         .then(customer => {
-            console.info('New Customer Added');
+            console.info(`New Customer ${customer.firstName.cyan.underline.bold} Added`);
             mongoose.connection.close();
         });
 };
@@ -47,6 +47,17 @@ const deleteCustomer = async (_id) => {
     })
     .catch(error => console.info(error));
 };
+
+const listCustomers = async() => {
+    try{
+    const customers = await Customer.find()
+        console.info("All Customers")
+        console.info(customers);
+        mongoose.connection.close();
+}    catch{
+        (error => console.info(error))
+}
+}
   
 
 
@@ -54,7 +65,8 @@ module.exports = {
     addCustomer,
     findCustomer,
     updateCustomer,
-    deleteCustomer
+    deleteCustomer,
+    listCustomers
 };
 
 mongoose.connect('mongodb://127.0.0.1:27017/myCLI', {

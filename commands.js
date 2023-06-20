@@ -6,7 +6,8 @@ const
     addCustomer, 
     findCustomer, 
     updateCustomer, 
-    deleteCustomer
+    deleteCustomer,
+    listCustomers
 } = require('./server')
 
 
@@ -57,6 +58,29 @@ program
     .action(name => findCustomer(name));
 
 
+
+
+program
+    .command('delete <_id>')
+    .alias('d')
+    .description('Delete customer')
+    .action((_id) => deleteCustomer(_id))
+
+
+program
+    .command('update <_id>')
+    .alias('u')
+    .description('Update a customer')
+    .action(_id => {
+      prompt(questions).then(answers => updateCustomer(_id, answers));
+    });
+    
+
+program
+    .command('list')
+    .alias('l')
+    .description('List all customers')
+    .action(() => listCustomers())
 
 
 
